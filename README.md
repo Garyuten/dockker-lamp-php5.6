@@ -29,7 +29,7 @@ $ docker-compose build
 $ docker-compose up
 ```
 
-You can access [http://localhost:8080/](http://localhost: 8080/)
+You can access [http://localhost:8080/](http://localhost:8080/)
 
 ## Directory
 
