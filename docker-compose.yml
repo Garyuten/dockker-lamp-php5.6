@@ -1,0 +1,58 @@
+version: '2'
+services:
+  mysql:
+    container_name: projectname_mysql
+    build: ./docker/db
+    volumes:
+      - ./docker/db/mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    hostname: localhost
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+    # 所属するネットワークとIPを指定
+    networks:
+      br0:
+        # このIPアドレスがデータベースホスト名になる ( localhost → 192.168.202.2)
+        ipv4_address: 192.168.202.2
+  web:
+    container_name: projectname_apache_php
+    build: ./docker/web
+    ports:
+      - '8080:80'
+    volumes:
+      - ./public_html:/var/www/html
+      - ./docker/logs:/var/log/httpd
+    depends_on:
+      - mysql
+    # 所属するネットワークとIPを指定
+    networks:
+      br0:
+        ipv4_address: 192.168.202.3
+  phpmyadmin:
+    container_name: projectname_phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=root
+    links:
+      - mysql
+    ports:
+      - 8088:80
+    volumes:
+      - /sessions
+    # 所属するネットワークとIPを指定
+    networks:
+      br0:
+        ipv4_address: 192.168.202.4
+
+# 新規ブリッチを定義
+networks:
+  br0:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 192.168.202.0/24
+        gateway: 192.168.202.1
