@@ -50,7 +50,7 @@ You can access [http://localhost:8080/](http://localhost:8080/)
 
 ## How to change PHP version
 
-Please eidt ```docker/web/Dockerfile```
+Please edit ```docker/web/Dockerfile```
 
 ### php5.6
 ```Dockerfile:docker/web/Dockerfile
