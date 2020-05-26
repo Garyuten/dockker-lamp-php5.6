@@ -1,5 +1,5 @@
 # docker-lamp
-Dockerand docker-compose 
+Dockerand docker-compose
 
 - Apache
 	- mod_rewrite
@@ -11,7 +11,7 @@ Dockerand docker-compose
 * Operation check
 - php5.6.28
 	- ✅ baserCMS 3.0.16
-	- ✅ Wordpress 4.9.8 
+	- ✅ Wordpress 4.9.8
 - php7.1
 	- ✅ baserCMS 4.1.3
 	- ✅ Wordpress 4.9.8
@@ -70,4 +70,4 @@ phpMyAdmin : [http://localhost:8088/](http://localhost:8088/)
 - database host : 192.168.202.2 (default)
 - database user : root
 - database pass : root
-- database port : 3308
+- database port : 3306
