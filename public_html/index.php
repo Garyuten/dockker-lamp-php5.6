@@ -31,7 +31,7 @@
     </tr>
     <tr>
       <th>port</th>
-      <td>3308</td>
+      <td>3306</td>
     </tr>
   </table>
 
